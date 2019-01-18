@@ -38,5 +38,40 @@ public class runner {
         return n%10 + sumDigits(n/10);
     }
 
+    public int powerN(int base, int n) {
+        if(n == 0){
+            return 1;
+        }
+        return base * powerN(base, n-1);
+    }
 
+    public String noX(String str) {
+        if(str.length() == 0){
+            return "";
+        }
+        if(!str.substring(0,1).equals("x")){
+            return str.substring(0,1) + noX(str.substring(1));
+        }
+        return noX(str.substring(1));
+    }
+
+    public String allStar(String str) {
+        if(str.length() == 0) {
+            return "";
+        }
+        if(str.length() == 1) {
+            return str.substring(0,1);
+        }
+        return str.substring(0,1) + "*" + allStar(str.substring(1));
+    }
+
+    public int strCount(String str, String sub) {
+        if(str.length() < sub.length()){
+            return 0;
+        }
+        if(str.substring(0,sub.length()).equals(sub)){
+            return 1 + strCount(str.substring(sub.length()), sub);
+        }
+        return strCount(str.substring(1), sub);
+    }
 }
